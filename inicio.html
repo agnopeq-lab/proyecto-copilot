@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Técnico: Grafos</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav">
+      <a href="inicio.html">Inicio</a>
+      <a href="index.html" class="active">Blog</a>
+      <a href="nodos.html">Nodos</a>
+      <a href="aristas.html">Aristas</a>
+    </div>
+  </nav>
+  <header>
+    <div class="container">
+      <h1 style="color:#b48a4a;">Blog Técnico: Estructura de Datos Grafos</h1>
+      <p class="subtitle">Angela Nope</p>
+    </div>
+  </header>
+  <main class="container">
+    <!-- Post 1 -->
+    <article class="post">
+      <h2>1. Introducción a los Grafos: Nodos, Aristas y Tipos</h2>
+      <p>
+        Un <strong>grafo</strong> es una estructura de datos compuesta por un conjunto de <strong>nodos</strong> (también llamados <em>vértices</em>) y un conjunto de <strong>aristas</strong> (o <em>ejes</em>) que conectan pares de nodos. Los grafos se utilizan para modelar relaciones y conexiones en redes sociales, mapas, rutas, y mucho más.
+      </p>
+      <p><strong>Aplicaciones de los grafos:</strong></p>
+      <ul>
+        <li>Redes sociales (usuarios y sus conexiones).</li>
+        <li>Mapas de carreteras (ciudades y caminos).</li>
+        <li>Redes eléctricas y de agua.</li>
+        <li>Biología (redes neuronales, relaciones entre especies).</li>
+        <li>Internet (enlaces entre páginas web).</li>
+      </ul>
+      <ul>
+        <li><strong>Nodos (Vértices):</strong> Elementos o puntos del grafo.</li>
+        <li><strong>Aristas (Ejes):</strong> Conexiones entre los nodos.</li>
+      </ul>
+      <p><strong>Tipos de grafos:</strong></p>
+      <ul>
+        <li><strong>Grafo dirigido:</strong> Las aristas tienen dirección. <br><em>Ejemplo:</em> Twitter, donde A sigue a B, pero B no necesariamente sigue a A.</li>
+        <li><strong>Grafo no dirigido:</strong> Las aristas no tienen dirección. <br><em>Ejemplo:</em> Facebook, donde la amistad es mutua.</li>
+        <li><strong>Grafo ponderado:</strong> Las aristas tienen un peso o valor asociado. <br><em>Ejemplo:</em> Mapa de carreteras, donde el peso es la distancia entre ciudades.</li>
+      </ul>
+      <div class="diagram">
+        <p><strong>Ejemplo visual: Grafo no dirigido con 5 nodos</strong></p>
+        <svg width="220" height="160">
+          <circle cx="40" cy="80" r="20" fill="#4e79a7" />
+          <text x="40" y="85" text-anchor="middle" fill="#fff" font-size="16">A</text>
+          <circle cx="110" cy="40" r="20" fill="#4e79a7" />
+          <text x="110" y="45" text-anchor="middle" fill="#fff" font-size="16">B</text>
+          <circle cx="180" cy="80" r="20" fill="#4e79a7" />
+          <text x="180" y="85" text-anchor="middle" fill="#fff" font-size="16">C</text>
+          <circle cx="110" cy="140" r="20" fill="#4e79a7" />
+          <text x="110" y="145" text-anchor="middle" fill="#fff" font-size="16">D</text>
+          <circle cx="110" cy="90" r="20" fill="#f28e2b" />
+          <text x="110" y="95" text-anchor="middle" fill="#fff" font-size="16">E</text>
+          <!-- Aristas -->
+          <line x1="40" y1="80" x2="110" y2="40" stroke="#888" stroke-width="3" />
+          <line x1="40" y1="80" x2="110" y2="90" stroke="#888" stroke-width="3" />
+          <line x1="110" y1="40" x2="180" y2="80" stroke="#888" stroke-width="3" />
+          <line x1="110" y1="40" x2="110" y2="90" stroke="#888" stroke-width="3" />
+          <line x1="180" y1="80" x2="110" y2="90" stroke="#888" stroke-width="3" />
+          <line x1="110" y1="140" x2="110" y2="90" stroke="#888" stroke-width="3" />
+        </svg>
+      </div>
+    </article>
+
+    <!-- Post 2 -->
+    <article class="post">
+      <h2>2. Representación de Grafos</h2>
+      <p>Existen dos formas principales de representar un grafo en la memoria de una computadora:</p>
+      <h3>Lista de Adyacencia</h3>
+      <p>Utiliza una lista para cada nodo, donde se almacenan los nodos a los que está conectado. Es eficiente en espacio para grafos dispersos.</p>
+      <ul>
+        <li><strong>Ventajas:</strong> Ocupa menos memoria en grafos con pocas conexiones (dispersos).</li>
+        <li><strong>Desventajas:</strong> Consultar si existe una arista entre dos nodos puede ser más lento.</li>
+      </ul>
+      <pre><code>// Grafo no dirigido
+A: B, E
+B: A, C, E
+C: B, E
+D: E
+E: A, B, C, D</code></pre>
+      <h3>Matriz de Adyacencia</h3>
+      <p>Utiliza una matriz donde las filas y columnas representan los nodos. Un valor 1 indica la presencia de una arista. Es eficiente para consultar aristas.</p>
+      <ul>
+        <li><strong>Ventajas:</strong> Permite saber rápidamente si existe una arista entre dos nodos.</li>
+        <li><strong>Desventajas:</strong> Ocupa más memoria, especialmente en grafos grandes y dispersos.</li>
+      </ul>
+      <pre><code>    A B C D E
+A [0 1 0 0 1]
+B [1 0 1 0 1]
+C [0 1 0 0 1]
+D [0 0 0 0 1]
+E [1 1 1 1 0]</code></pre>
+      <div class="diagram">
+        <p><strong>Visualización de ambas representaciones para el mismo grafo</strong></p>
+        <svg width="220" height="160">
+          <!-- Igual al grafo anterior -->
+          <circle cx="40" cy="80" r="20" fill="#4e79a7" />
+          <text x="40" y="85" text-anchor="middle" fill="#fff" font-size="16">A</text>
+          <circle cx="110" cy="40" r="20" fill="#4e79a7" />
+          <text x="110" y="45" text-anchor="middle" fill="#fff" font-size="16">B</text>
+          <circle cx="180" cy="80" r="20" fill="#4e79a7" />
+          <text x="180" y="85" text-anchor="middle" fill="#fff" font-size="16">C</text>
+          <circle cx="110" cy="140" r="20" fill="#4e79a7" />
+          <text x="110" y="145" text-anchor="middle" fill="#fff" font-size="16">D</text>
+          <circle cx="110" cy="90" r="20" fill="#f28e2b" />
+          <text x="110" y="95" text-anchor="middle" fill="#fff" font-size="16">E</text>
+          <!-- Aristas -->
+          <line x1="40" y1="80" x2="110" y2="40" stroke="#888" stroke-width="3" />
+          <line x1="40" y1="80" x2="110" y2="90" stroke="#888" stroke-width="3" />
+          <line x1="110" y1="40" x2="180" y2="80" stroke="#888" stroke-width="3" />
+          <line x1="110" y1="40" x2="110" y2="90" stroke="#888" stroke-width="3" />
+          <line x1="180" y1="80" x2="110" y2="90" stroke="#888" stroke-width="3" />
+          <line x1="110" y1="140" x2="110" y2="90" stroke="#888" stroke-width="3" />
+        </svg>
+      </div>
+    </article>
+
+    <!-- Post 3 -->
+    <article class="post">
+      <h2>3. Algoritmos Fundamentales de Recorrido</h2>
+      <p>Los algoritmos de recorrido permiten explorar todos los nodos y aristas de un grafo. Los dos más importantes son:</p>
+      <h3>Búsqueda en Amplitud (BFS)</h3>
+      <p>Explora el grafo nivel por nivel, utilizando una cola. Es útil para encontrar la ruta más corta en grafos no ponderados.</p>
+      <ul>
+        <li><strong>Aplicaciones:</strong> Encontrar la ruta más corta en mapas, redes sociales, laberintos.</li>
+        <li>Detectar si un grafo es conexo.</li>
+      </ul>
+      <pre><code>// Pseudocódigo BFS
+BFS(grafo, nodo_inicial):
+  crear una cola Q
+  marcar nodo_inicial como visitado y ponerlo en Q
+  mientras Q no esté vacía:
+    nodo = Q.desencolar()
+    para cada vecino de nodo:
+      si vecino no ha sido visitado:
+        marcar como visitado y poner en Q</code></pre>
+      <h3>Búsqueda en Profundidad (DFS)</h3>
+      <p>Explora el grafo yendo lo más profundo posible antes de retroceder, utilizando una pila (o recursión).</p>
+      <ul>
+        <li><strong>Aplicaciones:</strong> Detectar ciclos en grafos, encontrar componentes conexos, resolver rompecabezas y laberintos.</li>
+        <li>Recorrer árboles de decisión o estructuras jerárquicas.</li>
+      </ul>
+      <pre><code>// Pseudocódigo DFS
+DFS(grafo, nodo_inicial):
+  marcar nodo_inicial como visitado
+  para cada vecino de nodo_inicial:
+    si vecino no ha sido visitado:
+      DFS(grafo, vecino)</code></pre>
+    </article>
+  </main>
+  <section class="post">
+    <h2>Videos recomendados sobre Grafos</h2>
+    <div class="diagram" style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
+      <div>
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/gXgEDyodOJU" title="¿Qué es un grafo? - Explicación básica" frameborder="0" allowfullscreen></iframe>
+        <p style="text-align:center; margin-top:0.5em;">¿Qué es un grafo? (Explicación básica)</p>
+      </div>
+      <div>
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/09_LlHjoEiY" title="Representación de grafos: Matriz y lista de adyacencia" frameborder="0" allowfullscreen></iframe>
+        <p style="text-align:center; margin-top:0.5em;">Representación de grafos</p>
+      </div>
+      <div>
+        <iframe width="320" height="180" src="https://www.youtube.com/embed/8Cqdt7eG3b4" title="BFS y DFS - Algoritmos de recorrido en grafos" frameborder="0" allowfullscreen></iframe>
+        <p style="text-align:center; margin-top:0.5em;">BFS y DFS en grafos</p>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <p style="color:#3a3326;">&copy; 2025 Blog Técnico sobre Grafos. Hecho para UNINCCA.</p>
+    </div>
+  </footer>
+</body>
+</html>
