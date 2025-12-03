@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Representación de Grafos</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html">← Volver</a>
+    <article>
+      <button class="print-btn" onclick="window.print()">Imprimir</button>
+      <h2>Post #2 — Representación de Grafos</h2>
+
+      <p>Las dos formas principales de representar grafos en memoria son <strong>lista de adyacencia</strong> y <strong>matriz de adyacencia</strong>. Cada una tiene ventajas dependiendo de la densidad del grafo y las operaciones que se requieren.</p>
+
+      <h3>Lista de adyacencia</h3>
+      <p>Para cada nodo, se mantiene una lista de nodos adyacentes. Es eficiente en espacio para grafos dispersos (pocas aristas).</p>
+
+      <p>Ejemplo (para el mismo grafo del Post #1):</p>
+      <pre><code>A: B, D
+B: A, C, E
+C: B, E
+D: A, E, B
+E: B, C, D
+</code></pre>
+
+      <h3>Matriz de adyacencia</h3>
+      <p>Una matriz NxN donde la celda (i,j) indica si existe arista entre i y j (y opcionalmente el peso). Es más rápida para consultar si (u,v) existe, pero usa O(N^2) memoria.</p>
+
+      <p>Matriz para nodos [A,B,C,D,E] (0/1 para no ponderada):</p>
+      <table border="1" cellpadding="6" style="margin-top:.5rem;border-collapse:collapse">
+        <tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr>
+        <tr><th>A</th><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+        <tr><th>B</th><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+        <tr><th>C</th><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><th>D</th><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><th>E</th><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+      </table>
+
+      <h3>Comparación rápida</h3>
+      <ul>
+        <li><strong>Lista de adyacencia</strong>: buena para grafos dispersos — memoria O(V + E).</li>
+        <li><strong>Matriz de adyacencia</strong>: buena para grafos densos o consultas rápidas de existencia de arista — memoria O(V^2).</li>
+      </ul>
+    </article>
+  </div>
+    <script>
+      (function(){
+        try{
+          const links = document.querySelectorAll('.main-nav a');
+          const cur = location.pathname.split('/').pop() || 'index.html';
+          links.forEach(a=>{
+            const href = a.getAttribute('href');
+            if(href === cur || href.endsWith(cur) || href.endsWith('/'+cur)) a.classList.add('active');
+          });
+        }catch(e){}
+      })();
+    </script>
+</body>
+</html>

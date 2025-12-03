@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Introducción a los Grafos</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html">← Volver</a>
+    <button class="print-btn" onclick="window.print()">Imprimir</button>
+    <article>
+      <h2>Post #1 — Introducción a los Grafos: Nodos, Aristas y Tipos</h2>
+      <p>Un <strong>grafo</strong> es una colección de <em>vértices</em> (o nodos) y <em>aristas</em> (o ejes) que conectan pares de vértices. Los grafos modelan relaciones entre objetos: rutas en un mapa, conexiones en una red social, dependencias entre tareas, etc.</p>
+
+      <h3>Conceptos clave</h3>
+      <ul>
+        <li><strong>Nodo (Vértice)</strong>: Un punto que representa una entidad.</li>
+        <li><strong>Arista (Eje)</strong>: Conexión entre dos nodos. Puede ser dirigida o no dirigida.</li>
+        <li><strong>Grafo dirigido</strong>: Cada arista tiene una dirección (u → v).</li>
+        <li><strong>Grafo no dirigido</strong>: Las aristas no tienen dirección; (u, v) equivale a (v, u).</li>
+        <li><strong>Grafo ponderado</strong>: Las aristas tienen pesos (costes, distancias).</li>
+      </ul>
+
+      <h3>Ejemplo visual — Grafo no dirigido con 5 nodos</h3>
+      <p>Diagrama simple (SVG inline):</p>
+      <svg width="100%" height="260" viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg" aria-label="Grafo no dirigido con 5 nodos">
+        <!-- edges -->
+        <line x1="120" y1="50" x2="300" y2="40" stroke="#8a4bcf" stroke-width="3" stroke-linecap="round" />
+        <line x1="300" y1="40" x2="480" y2="70" stroke="#8a4bcf" stroke-width="3" stroke-linecap="round" />
+        <line x1="120" y1="50" x2="220" y2="170" stroke="#8a4bcf" stroke-width="3" stroke-linecap="round" />
+        <line x1="220" y1="170" x2="480" y2="70" stroke="#8a4bcf" stroke-width="3" stroke-linecap="round" />
+        <line x1="300" y1="40" x2="220" y2="170" stroke="#8a4bcf" stroke-width="3" stroke-linecap="round" />
+
+        <!-- nodes -->
+        <g fill="#fff" stroke="#5b2e8a" stroke-width="3">
+          <circle cx="120" cy="50" r="22" />
+          <circle cx="300" cy="40" r="22" />
+          <circle cx="480" cy="70" r="22" />
+          <circle cx="220" cy="170" r="22" />
+          <circle cx="360" cy="160" r="22" />
+        </g>
+        <g font-family="Segoe UI, Arial" font-size="14" fill="#5b2e8a" font-weight="700">
+          <text x="115" y="55">A</text>
+          <text x="295" y="45">B</text>
+          <text x="475" y="75">C</text>
+          <text x="215" y="175">D</text>
+          <text x="355" y="165">E</text>
+        </g>
+      </svg>
+
+      <p>En este grafo no dirigido, los nodos A,B,C,D,E están conectados entre sí por varias aristas. No hay direcciones; por ejemplo, A–B es lo mismo que B–A.</p>
+
+      <p><em>Si quieres profundizar:</em> piensa en una red social donde cada nodo es una persona y una arista indica amistad.</p>
+    </article>
+  </div>
+  <script>
+    // navegación activa para enlaces relativos
+    (function(){
+      try{
+        const links = document.querySelectorAll('.main-nav a');
+        const cur = location.pathname.split('/').pop() || 'index.html';
+        links.forEach(a=>{
+          const href = a.getAttribute('href');
+          if(href === cur || href.endsWith(cur) || href.endsWith('/'+cur)){
+            a.classList.add('active');
+          }
+        });
+      }catch(e){/* noop */}
+    })();
+  </script>
+</body>
+</html>

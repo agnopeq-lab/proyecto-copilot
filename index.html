@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Blog técnico sobre grafos: definición, representaciones y algoritmos (BFS, DFS). Recursos y ejemplos en español.">
+  <title>Blog sobre Grafos</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Blog Técnico: Grafos</h1>
+      <p class="tagline">Estructuras de datos, representaciones y algoritmos — morado y blanco</p>
+      <nav class="main-nav">
+        <a href="index.html">Inicio</a>
+        <a href="posts/post1.html">Introducción</a>
+        <a href="posts/post2.html">Representación</a>
+        <a href="posts/post3.html">Algoritmos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Bienvenido al blog sobre Grafos</h2>
+      <p>Este sitio contiene tres artículos iniciales que cubren la definición, las representaciones en memoria y los algoritmos fundamentales de recorrido para grafos. Diseñado con un tema morado y blanco y listo para publicar en GitHub Pages.</p>
+      <div class="post-links">
+        <a class="card" href="posts/post1.html">Post #1 — Introducción a los Grafos</a>
+        <a class="card" href="posts/post2.html">Post #2 — Representación de Grafos</a>
+        <a class="card" href="posts/post3.html">Post #3 — BFS y DFS</a>
+      </div>
+    </section>
+
+    <section class="about">
+      <h3>Qué encontrarás</h3>
+      <ul>
+        <li>Conceptos clave: nodos, aristas y tipos de grafos.</li>
+        <li>Representaciones: lista de adyacencia y matriz de adyacencia con ejemplos.</li>
+        <li>Algoritmos: BFS y DFS con pseudocódigo y explicación de complejidades.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Preparado para publicarse en GitHub Pages. Sigue el <a href="README.md">README</a> para instrucciones de despliegue.</p>
+    </div>
+  </footer>
+  <script>
+    // Agrega la clase 'active' al enlace de navegación actual
+    (function(){
+      try{
+        const links = document.querySelectorAll('.main-nav a');
+        const cur = location.pathname.split('/').pop() || 'index.html';
+        links.forEach(a=>{
+          const href = a.getAttribute('href');
+          if(href === cur || href.endsWith(cur) || (cur === '' && href === 'index.html')){
+            a.classList.add('active');
+          }
+        });
+      }catch(e){console.warn(e)}
+    })();
+  </script>
+</body>
+</html>

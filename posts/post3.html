@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BFS y DFS</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html">← Volver</a>
+    <article>
+      <button class="print-btn" onclick="window.print()">Imprimir</button>
+      <h2>Post #3 — Algoritmos Fundamentales de Recorrido: BFS y DFS</h2>
+
+      <h3>Búsqueda en Amplitud (BFS)</h3>
+      <p>BFS recorre el grafo por niveles: visita primero todos los nodos a distancia 1 del origen, luego los de distancia 2, etc. Es útil para encontrar la distancia mínima (en número de aristas) en grafos no ponderados.</p>
+
+      <h4>Pseudocódigo (versión típica)</h4>
+      <pre><code>BFS(grafo, origen):
+  crear cola Q
+  marcar origen como visitado
+  encolar origen en Q
+  mientras Q no esté vacía:
+    u = desencolar Q
+    para cada v en adyacentes(u):
+      si v no está visitado:
+        marcar v como visitado
+        encolar v
+</code></pre>
+
+      <p>Complejidad: O(V + E) donde V = número de vértices y E = número de aristas.</p>
+
+      <h3>Búsqueda en Profundidad (DFS)</h3>
+      <p>DFS explora tan profundo como sea posible por cada rama antes de retroceder. Puede implementarse recursivamente o con una pila explícita. Es útil para detectar componentes, orden topológico (en DAGs) y encontrar ciclos.</p>
+
+      <h4>Pseudocódigo (recursivo)</h4>
+      <pre><code>DFS-Visit(u):
+  marcar u como visitado
+  para cada v en adyacentes(u):
+    si v no está visitado:
+      DFS-Visit(v)
+
+DFS(grafo):
+  para cada vértice u en grafo:
+    si u no está visitado:
+      DFS-Visit(u)
+</code></pre>
+
+      <p>Complejidad: O(V + E) (cada vértice y arista se procesa una vez).</p>
+
+      <h3>Ejemplo rápido</h3>
+      <p>Para el grafo del Post #1, si hacemos BFS desde A: A → B → D → C → E (orden por niveles). Si hacemos DFS desde A (dependiendo del orden de vecinos) podríamos obtener: A → B → C → E → D.</p>
+    </article>
+  </div>
+    <script>
+      (function(){
+        try{
+          const links = document.querySelectorAll('.main-nav a');
+          const cur = location.pathname.split('/').pop() || 'index.html';
+          links.forEach(a=>{
+            const href = a.getAttribute('href');
+            if(href === cur || href.endsWith(cur) || href.endsWith('/'+cur)) a.classList.add('active');
+          });
+        }catch(e){}
+      })();
+    </script>
+</body>
+</html>
